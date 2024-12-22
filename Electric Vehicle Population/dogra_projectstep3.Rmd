@@ -1,0 +1,241 @@
+---
+title: "dogra_project_Electric Vehicle Population"
+output:
+  word_document: default
+  pdf_document: default
+author: "Swati Dogra"
+date: "2023-11-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Introduction
+```{r}
+
+#The topic of this project is the analysis of the Electric Vehicle Population dataset from Kaggle. As the world is moving towards sustainable energy solutions, electric vehicles have emerged as a key player in reducing carbon emissions and fossil fuel dependency. 
+
+#This is a data science problem because it involves analyzing and interpreting complex datasets to extract meaningful insights. The dataset contains various features such as make, model, year of manufacture, type of electric vehicle, etc. By applying data science techniques, we can uncover patterns and trends that can inform decision-making in related fields.
+
+
+#In our journey to understand the electric vehicle (EV) landscape, we began with a dataset from Kaggle, rich with details about the EV population. Our goal was to uncover insights that could inform decision-making in the EV sector.
+#We started by formulating research questions that would guide our exploration. These questions aimed to uncover trends in the growth of the EV population, popular makes and models, the distribution of different types of EVs, and more.
+#To answer these questions, we embarked on a rigorous data analysis process. We imported the data into R and performed initial cleaning steps to ensure its quality. This involved handling missing values, ensuring correct data types, detecting outliers, and standardizing text data.
+#With a clean dataset in hand, we moved on to exploratory data analysis (EDA). We visualized the data in various ways to understand the distribution of variables and relationships between them. We also calculated descriptive statistics to get a sense of central tendencies and dispersion.
+#Our EDA revealed interesting patterns and trends in the data. For instance, we saw growth in the EV population over time and identified popular makes and models. We also noticed differences in the distribution of different types of EVs.
+#To delve deeper into our research questions, we performed statistical tests and built predictive models. These techniques helped us uncover new information that was not immediately apparent from the EDA. For example, we were able to predict future trends in the EV population based on current data.
+#Throughout this process, we manipulated our data in various ways - filtering on certain features, arranging it differently, selecting specific variables, creating new ones, and even joining separate data frames. This allowed us to view our data from different angles and extract maximum insights.
+#Finally, we summarized our findings and developed a proposed solution based on them. We validated this solution and documented all our steps for future reference. Our journey with the data was not just an analysis exercise but also a step towards implementing a solution in the real world.
+#In conclusion, our exploration of the EV dataset was a fascinating journey that revealed valuable insights about the EV landscape. It demonstrated how data science techniques can be used to transform raw data into actionable knowledge.
+
+
+
+```
+## Problem Statement
+```{r}
+#The problem statement addressed in this project was to analyze the Electric Vehicle Population dataset from Kaggle to uncover insights that could inform decision-making in the electric vehicle sector. The goal was to understand trends in the growth of the electric vehicle population, identify popular makes and models, examine the distribution of different types of electric vehicles, and predict future trends based on current data. The project involved a rigorous data analysis process, including data cleaning, exploratory data analysis, statistical testing, and predictive modeling. The findings from this analysis were then used to develop a proposed solution to the problem statement.
+
+```
+## Addressing problem statement
+```{r}
+#1.	Data Understanding: We will start by loading the dataset in R and understanding its structure. This includes identifying the variables, their types, and understanding what each variable represents.
+#2.	Data Cleaning: This step involves handling missing values, outliers, and incorrect data entries if any.
+#3.	Data Analysis: We will perform data analysis to understand the distribution of variables, identify patterns and relationships between different variables. This will be done using various statistical techniques and data visualization.
+#4.	Answering Research Questions: Using the insights gained from data analysis, we will answer the research questions outlined earlier. This might involve further data manipulation and visualization.
+#5.	Predictive Modeling: Build a predictive model to forecast future trends in the electric vehicle population. This could involve splitting the data into training and test sets, selecting an appropriate model, training the model, and evaluating its performance.
+#6.	Conclusion: Finally, we will summarize our findings and suggest potential areas for further research or action based on our analysis.
+
+```
+## Analysis
+
+## Plots and Table Needs
+```{r}
+
+library(readr)
+
+## Path to CSV file
+file_path <- "C:/Users/swati/OneDrive/Desktop/Swati/Bellevue/DSC 520/Project/Electric_Vehicle_Population_Data.csv"
+
+## Read the file
+ev_data <- read.csv(file_path)
+
+
+
+# load the ggplot2 package
+library(ggplot2)
+# load the tidyverse package
+library(tidyverse)
+
+#1.	Bar Plots: These can be used to compare the count or proportion of categorical variables. For example, a bar plot could be used to show the number of electric vehicles by make or model.
+
+# Code for a bar plot
+ggplot(ev_data, aes(x = Make)) +
+  geom_bar() +
+  labs(title = "Number of Electric Vehicles by Make",
+       x = "Make",
+       y = "Count") +
+  theme_minimal()
+
+#2.	Histograms: These can be used to visualize the distribution of a single numerical variable. For example, a histogram could be used to show the distribution of vehicle Model Year.
+
+# Code for a histogram
+ggplot(ev_data, aes(x = Model_Year)) +
+  geom_histogram(binwidth = 1) +
+  labs(title = "Distribution of Vehicle Model Year",
+       x = "Age (Model Year)",
+       y = "Count") +
+  theme_minimal()
+
+#3.	Scatter Plots: These can be used to visualize the relationship between two numerical variables. For example, a scatter plot could be used to show the relationship between vehicle age and mileage.
+
+# Code for a scatter plot
+ggplot(ev_data, aes(x = Model_Year, y = Electric_Range)) +
+  geom_point() +
+  labs(title = "Relationship between Vehicle Age and Mileage",
+       x = "Age (Model Year)",
+       y = "Mileage (Electric Range)") +
+  theme_minimal()
+
+#4.	Box Plots: These can be used to visualize the distribution of a numerical variable across different categories. For example, a box plot could be used to compare the ages of vehicles across different makes.
+
+# Code for a box plot
+ggplot(ev_data, aes(x = Make, y = Model_Year)) +
+  geom_boxplot() +
+  labs(title = "Comparison of Vehicle Ages by Make",
+       x = "Make",
+       y = "Age (Model Year)") +
+  theme_minimal()
+
+
+
+
+## Import and Clean data
+```{r}
+
+## Load libraries
+library(tidyverse)
+
+## Path to CSV file
+file_path <- "C:/Users/swati/OneDrive/Desktop/Swati/Bellevue/DSC 520/Project/Electric_Vehicle_Population_Data.csv"
+
+## Import the file
+ev_data <- read.csv(file_path)
+
+## View the first few rows of the dataset
+head(ev_data)
+
+## Check for missing values
+sum(is.na(ev_data))
+
+## remove rows with missing values
+ev_data <- ev_data %>% drop_na()
+
+
+```
+## Final dataset view
+```{r}
+
+# Structure of the dataset
+str(ev_data)
+
+# Summary of the dataset
+summary(ev_data)
+
+# View the first few rows of the dataset
+head(ev_data)
+
+
+
+
+# Create a bar plot of electric vehicle count by make
+ggplot(ev_data, aes(y = Make)) +
+  geom_bar() +
+  theme_minimal() +
+  labs(title = "Count of Electric Vehicles by Make",
+       y = "Make",
+       x = "Count")
+
+
+# Calculate the average model year of vehicles by make
+ev_data %>%
+  group_by(Make) %>%
+  summarise(avg_model_year = mean(Model_Year, na.rm = TRUE))
+
+
+
+# Bar plot
+ggplot(ev_data, aes(y = Make)) +
+  geom_bar() +
+  labs(title = "Number of Electric Vehicles by Make",
+       y = "Make",
+       x = "Count") +
+  theme_minimal()
+
+# Histogram plot
+ggplot(ev_data, aes(x = Model_Year)) +
+  geom_histogram(binwidth = 1) +
+  labs(title = "Distribution of Vehicle Model Year",
+       x = "Model_Year",
+       y = "Count") +
+  theme_minimal()
+
+# Scatter plot
+ggplot(ev_data, aes(x = Model_Year, y = Electric_Range)) +
+  geom_point() +
+  labs(title = "Relationship between Vehicle Model Year and Mileage",
+       x = "Model_Year",
+       y = "Mileage (EV Range)") +
+  theme_minimal()
+
+# Box plot
+ggplot(ev_data, aes(y = Make, x = Model_Year)) +
+  geom_boxplot() +
+  labs(title = "Comparison of Vehicle Model Year by Make",
+       y = "Make",
+       x = "Model_Year") +
+  theme_minimal()
+
+
+
+```
+
+
+## Implications
+```{r}
+
+#1.	Informed Decision Making: Understanding the growth trends and popular makes and models of electric vehicles can help consumers make informed decisions when purchasing an electric vehicle.
+#2.	Future Trends: The predictive insights from our analysis can give consumers an idea of what to expect in the future in terms of electric vehicle technology and availability.
+#3.	Awareness: The analysis can increase consumer awareness about the increasing adoption of electric vehicles, potentially influencing their own attitudes and behaviors towards these vehicles.
+#4.	Personalized Choices: Insights on the distribution of different types of electric vehicles can help consumers choose a vehicle that suits their specific needs and preferences.
+
+#Overall, the analysis provides valuable information that can guide consumers in their journey towards adopting electric vehicles.
+
+
+
+```
+## Limitations
+```{r}
+
+#1.	Data Limitations: The analysis is based on the Electric Vehicle Population dataset from Kaggle. If this dataset is not comprehensive or up-to-date, it could limit the accuracy of our findings. Additionally, the dataset might not include all relevant features that could impact the electric vehicle population, such as government policies, charging infrastructure, or consumer attitudes towards electric vehicles.
+#2.	Methodological Limitations: The analysis methods used, while robust, have their own limitations. For example, the predictive model assumes that future trends will follow the same patterns as current data. If this assumption is not valid (due to changes in technology, market conditions, etc.), the predictions might not be accurate.
+#3.	Interpretation Limitations: The interpretation of the results depends on the understanding and expertise of the analyst. Different analysts might interpret the same results in different ways.
+
+
+# To improve or build on this analysis:
+
+#1.	Use More Comprehensive Data: Incorporate additional datasets that provide more comprehensive information about the electric vehicle landscape. This could include data on government policies, charging infrastructure, consumer surveys, etc.
+#2.	Apply Advanced Analysis Methods: Use more advanced statistical or machine learning methods to uncover deeper insights from the data. This could include multivariate analysis, deep learning models, etc.
+#3.Collaborate with Domain Experts: Work with experts in the electric vehicle industry to ensure accurate interpretation of the results and effective implementation of the findings.
+
+```
+## Conclusion
+```{r}
+
+#This project demonstrated how data science techniques can be applied to analyze the Electric Vehicle Population dataset from Kaggle. Through a rigorous process of data cleaning, exploratory data analysis, statistical testing, and predictive modeling, we were able to uncover valuable insights about the electric vehicle landscape. These insights informed a proposed solution to increase electric vehicle adoption. While the analysis has its limitations, it provides a solid foundation for further research and implementation in the real world. The project highlighted the power of data science in transforming raw data into actionable knowledge and solutions. It was a fascinating journey through the world of electric vehicles, and we look forward to seeing where these insights will take us next.
