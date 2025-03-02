@@ -1,0 +1,114 @@
+# Predictive Modeling of Cosmetics Product Ratings Using Machine Learning
+
+## Overview
+This project aims to predict cosmetics product ratings using machine learning models such as Logistic Regression, K-Nearest Neighbors (KNN), and Random Forest Classifiers. Leveraging a dataset from Kaggle, the analysis identified key features like price, brand, and skin type suitability that impact ratings. The models were evaluated using metrics like ROC AUC scores, with Logistic Regression. Findings indicate that accurate prediction of product ratings can enhance consumer satisfaction, aid brands in improving products, and maintain market competitiveness. Recommendations include further feature engineering, model tuning, and exploring advanced algorithms to refine predictions and personalize recommendations.
+
+## Project Details
+- Project Title: Predictive Modeling of Cosmetics Product Ratings Using Machine Learning
+- Author: Swati Dogra
+- Date: 12/21/2024
+
+## Objectives
+Our goal is to predict the ratings of cosmetics products based on various features such as price, brand, 
+and skin type suitability. The challenge lies in accurately distinguishing between high-rated and low-rated 
+products using machine learning models.
+
+## Data Source
+The data was sourced from Kaggle, specifically the "Cosmetics Ingredients" dataset [1]. This data is useful 
+as it provides comprehensive details about various cosmetics products, including their ratings, prices, and 
+ingredients, which are critical for building accurate predictive models. 
+Attribute information: 
+1.   Label: Type of cosmetic product (e.g., moisturizer, cleanser, etc.) 
+2.   Brand: The brand or manufacturer of the product. 
+3.   Product Name: The name of the cosmetic product. 
+4.   Price: The cost of the product. 
+5.   Rank: Customer rating of the product. 
+6.   Ingredients: A list of ingredients used in the product. 
+7.   Skin Type: The skin types the product is suitable for (e.g., oily, dry, combination).
+
+
+## Tools and Libraries
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+
+## Methodology
+Data Exploration: By exploring the dataset, we identified key features like price, brand, and various skin 
+type suitability that significantly impact product ratings. Visualizations such as bar charts and box plots 
+helped in understanding the distribution of these features. 
+Data Preparation: We performed several steps to prepare the data: 
+ Cleaning: Removed any missing or irrelevant data. 
+ Transformation: Converted necessary columns to appropriate data types (e.g., numeric for Price 
+and Rank). 
+ Normalization: Standardized the data to ensure consistent scale. 
+Modeling: We employed three different machine learning models: 
+ Logistic Regression Classifier 
+ K-Nearest Neighbors (KNN) Classifier 
+ Random Forest Classifier 
+
+## Results
+Build and Evaluation of a model 
+To ensure a robust evaluation of our model, we partitioned the dataset into training and test 
+sets, allocating 30% of the data to the test set. Our predictive model focuses on the target variable, 
+Price, and incorporates selected features such as Label, Rank, and various skin types. By leveraging these 
+attributes, we aim to gauge the model's performance through key metrics, namely Root Mean Square 
+Error and R-squared.  
+RMSE provides insights into the average deviation of our predictions from actual values, 
+highlighting the precision of our model. Meanwhile, R-squared elucidates the proportion of variance in 
+Price explained by our selected features, shedding light on the model's explanatory power. This 
+meticulous approach ensures we comprehensively understand our model's accuracy and its potential for 
+predicting product pricing in the cosmetics industry. 
+We conducted a comprehensive analysis by categorizing product ranks into binary groups to 
+distinguish between high-rated and low-rated products. By setting the rating category as our target 
+variable and utilizing key features such as Label and various skin types, we aimed to determine the 
+model's accuracy. This process involved creating a confusion matrix to visualize the true positives, true 
+negatives, false positives, and false negatives, alongside generating a detailed classification report. The 
+classification report provided essential metrics like precision, recall, and F1-score, offering a clear 
+assessment of the model’s performance. This meticulous approach ensured we could effectively 
+evaluate and refine our model for better prediction and classification of product ratings in the cosmetics 
+industry.
+
+## Findings
+
+Logistic Regression Classifier - AUC: 0.73 An AUC of 0.73 indicates that the Logistic Regression model is 
+quite effective at distinguishing between high-rated and low-rated products. This high AUC value 
+suggests the model strikes a good balance between sensitivity (true positive rate) and specificity (false 
+positive rate), making it a reliable predictor. The model effectively captures linear relationships within 
+the dataset, which helps it make accurate predictions. This performance highlights the model's 
+capability to handle the complexities and nuances in the data to a reasonable extent. 
+
+K-Nearest Neighbors (KNN) Classifier - AUC: 0.69 An AUC of 0.69 shows the KNN classifier's ability to 
+distinguish between classes. This AUC value indicates that the nearest neighbors approach is leveraging 
+the information in the feature space more effectively. The improvement suggests that the choice of k
+value and distance metrics is working well, allowing the model to capture essential patterns and 
+relationships within the dataset. The KNN model is performing noticeably better at identifying high
+rated products from low-rated ones compared to random guessing. 
+
+Random Forest Classifier - AUC: 0.70 An AUC of 0.70 for the Random Forest classifier indicates that this 
+ensemble method of multiple decision trees is successfully capturing patterns within the data. The 
+model's ability to reduce overfitting by averaging multiple trees contributes to its stable and reliable 
+performance. This AUC score demonstrates that the Random Forest classifier is quite capable of 
+distinguishing between high and low-rated products, utilizing the diverse feature set effectively. It 
+highlights the model's strength in handling complex data and providing accurate predictions. 
+These AUC scores for all three models—Logistic Regression, KNN, and Random Forest—suggest 
+that they have a reasonable ability to distinguish between high-rated and low-rated products. Each 
+model has shown strengths in leveraging the dataset's information to make more accurate predictions. 
+
+
+## Conclusion
+We learned that logistic regression, KNN, and random forest models could effectively predict 
+cosmetics product ratings when properly tuned and evaluated. Each model showed varying degrees of 
+success, with logistic regression outperforming the others. 
+
+Our robust predictive model for classifying cosmetics products based on ratings will enhance personalized 
+recommendations, identify key factors influencing ratings, and allow for effective market segmentation. 
+Analyzing Random Forest, KNN, and Logistic Regression models has shown significant progress, with each 
+model achieving solid AUC scores, highlighting their effectiveness in distinguishing between high and low
+rated products.
+
+
+## Contact
+For questions or support, please open an issue on this repository or contact [sdogra@my365.bellevue.edu].
+
